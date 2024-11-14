@@ -1,0 +1,7 @@
+environment:
+  host: s
+  port: a
+
+user:
+  login: aa
+  password: bb

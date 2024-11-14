@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.*;
 
-public class TodoPostMethodScenario extends BaseTest {
+public class TodoPostMethodSimulation extends BaseTest {
 
     private TodoClient client;
 

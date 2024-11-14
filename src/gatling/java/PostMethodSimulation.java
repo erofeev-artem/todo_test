@@ -1,15 +1,18 @@
-import gatling.Scenario;
-import io.gatling.javaapi.core.CoreDsl;
+import io.gatling.javaapi.core.ScenarioBuilder;
 import io.gatling.javaapi.core.Simulation;
-import io.gatling.javaapi.http.HttpDsl;
 import io.gatling.javaapi.http.HttpProtocolBuilder;
 
-public class PostMethodSimulation extends Simulation {
-//    TodoProperties properties = new PropertiesConverter().ymlToObject(TodoProperties.class, "/todo_properties.yaml");
-    HttpProtocolBuilder httpProtocolBuilder = HttpDsl.http.baseUrl("http://127.0.0.1:8080/todos");
+import static io.gatling.javaapi.core.CoreDsl.constantUsersPerSec;
+import static io.gatling.javaapi.http.HttpDsl.http;
 
-    public PostMethodSimulation() {
-        this.setUp(Scenario.post.injectOpen(CoreDsl.constantUsersPerSec(1).during(1)))
-                .protocols(httpProtocolBuilder);
+public class PostMethodSimulation extends Simulation {
+    HttpProtocolBuilder httpProtocolBuilder = http.baseUrl("http://127.0.0.1:8080");
+    ScenarioBuilder myScenario = Scenario.post;
+
+    {
+        setUp(
+                myScenario.injectOpen(constantUsersPerSec(30).during(60))
+        ).protocols(httpProtocolBuilder);
     }
 }
+

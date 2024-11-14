@@ -1,15 +1,39 @@
 package org.todo.properties;
 
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+@Setter
+@Getter
+@NoArgsConstructor
+public class TodoProperties {
 
-public class HostProperties {
+    public Environment environment;
+    public User user;
+    public WebSocket webSocket;
 
-    InputStream inputStream = new FileInputStream("properties.yml");
-    Yaml yaml = new Yaml(new Constructor(H.class));
-    Student data = yaml.load(inputStream);
+    @Setter
+    @Getter
+    @NoArgsConstructor
+    public static class Environment{
+        public String host;
+        public int port;
+    }
+
+    @Setter
+    @Getter
+    @NoArgsConstructor
+    public static class User {
+        public String login;
+        public String password;
+    }
+
+    @Setter
+    @Getter
+    @NoArgsConstructor
+    public static class WebSocket {
+        public String host;
+        public String port;
+    }
 }

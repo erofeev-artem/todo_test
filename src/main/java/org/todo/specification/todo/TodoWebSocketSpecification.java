@@ -7,13 +7,16 @@ import org.todo.specification.Specification;
 import java.net.URI;
 
 @Getter
-public class SocketSpecification extends Specification<TodoProperties> {
+public class TodoWebSocketSpecification extends Specification<TodoProperties> {
 
-    public SocketSpecification() {
+    private String path = "/ws";
+
+    public TodoWebSocketSpecification() {
         super(TodoProperties.class, "/todo_properties.yaml");
     }
 
-    public URI getUri(){
-        return URI.create(properties.environment.getHost());
+    public URI getUri() {
+        return URI.create(properties.webSocket.getHost() + ":" + properties.environment.getPort() + path);
     }
+
 }

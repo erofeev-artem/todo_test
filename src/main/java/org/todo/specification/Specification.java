@@ -2,11 +2,11 @@ package org.todo.specification;
 
 import org.todo.properties.PropertiesConverter;
 
-public class TodoSpecification<T> {
+public class Specification<T> {
 
-    protected final T todoProperties;
+    protected final T properties;
 
-    public TodoSpecification(Class<T> properties, String propertiesPath) {
-        this.todoProperties = new PropertiesConverter().ymlToObject(properties, propertiesPath);
+    public Specification(Class<T> properties, String propertiesPath) {
+        this.properties = new PropertiesConverter().ymlToObject(properties, propertiesPath);
     }
 }

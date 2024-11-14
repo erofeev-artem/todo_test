@@ -1,2 +1,5 @@
-package org.todo.dto;public class WsTodoResponseDto {
+package org.todo.dto;
+
+public record WsTodoResponseDto (TodoDto data, String type){
+
 }

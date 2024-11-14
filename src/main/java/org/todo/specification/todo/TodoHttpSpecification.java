@@ -8,11 +8,11 @@ import org.todo.specification.Specification;
 
 import static io.restassured.RestAssured.given;
 
-public class HttpSpecification extends Specification<TodoProperties> {
+public class TodoHttpSpecification extends Specification<TodoProperties> {
 
     private final String appJson = "application/json";
 
-    public HttpSpecification() {
+    public TodoHttpSpecification() {
         super(TodoProperties.class, "/todo_properties.yaml");
     }
 
@@ -20,7 +20,8 @@ public class HttpSpecification extends Specification<TodoProperties> {
 
         TodoProperties.Environment environment = properties.getEnvironment();
         RequestSpecBuilder builder = new RequestSpecBuilder();
-        builder.addHeader("Content-Type", appJson)
+        builder
+                .addHeader("Content-Type", appJson)
                 .setBaseUri(environment.getHost())
                 .setPort(environment.getPort())
                 .addHeader("Accept", appJson)

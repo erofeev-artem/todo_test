@@ -1,7 +1,11 @@
 environment:
-  host: s
-  port: a
+  host: http://localhost
+  port: 8080
 
 user:
-  login: aa
-  password: bb
+  login: admin
+  password: admin
+
+webSocket:
+  port: 4242
+  host: ws://localhost
